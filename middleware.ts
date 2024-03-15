@@ -1,11 +1,32 @@
-import { authMiddleware } from "@clerk/nextjs";
+import { auth, authMiddleware, redirectToSignIn } from "@clerk/nextjs";
+import { redirect } from "next/dist/server/api-utils";
+import { NextResponse } from "next/server";
  
 export default authMiddleware({
   // Routes that can be accessed while signed out
   publicRoutes: ['/'],
-  // Routes that can always be accessed, and have
-  // no authentication information
-  ignoredRoutes: ['/no-auth-in-this-route'],
+  afterAuth(auth, req) {
+    if (auth.userId && auth.isPublicRoute) {
+      let path = "/select-org";
+
+      if(auth.orgId) {
+        path = `/organization/${auth.orgId}`;
+      }
+
+      const orgSelection = new URL(path, req.url);
+      return NextResponse.redirect(orgSelection);
+    }
+
+    if(!auth.userId && !auth.isPublicRoute) {
+      return redirectToSignIn({ returnBackUrl: req.url })
+    }
+
+    if(auth.userId && !auth.orgId && req.nextUrl.pathname !== "/select-org") {
+      const orgSelection = new URL("select-org", req.url);
+      return NextResponse.redirect(orgSelection);
+    }
+  }
+ 
 });
  
 export const config = {

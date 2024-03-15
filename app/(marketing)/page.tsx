@@ -27,7 +27,7 @@ const MarketingPage = () => {
                 colabore, gerencie projetos e alcance novos picos de produtividade. Dos arranha-céus ao home office, a forma como sua equipe trabalha é única - realize tudo com AnyTask
             </div>
             <Button className="mt-6" size="lg" asChild>
-                <Link href="/sign-up">
+                <Link href="/sign-in">
                     Obtenha AnyTask gratuitamente
                 </Link>
             </Button>
