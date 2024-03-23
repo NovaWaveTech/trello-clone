@@ -54,7 +54,7 @@ npm run dev
 You can run the following commands using npm:
 
 ```plaintext
-`npm run [command]`
+``npm run [command]``
 ```
 
 | Command | Description             |
@@ -74,9 +74,9 @@ To learn more about Next.js, check out the following resources:
 The easiest way to deploy your Next.js app is to use the Vercel Platform from the creators of Next.js. Check out our Next.js deployment documentation for more details.
 
 
-## 🤝 Colaboradores
+## Collaborators
 
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
+We thank the following people who contributed to this project:
 
 <table>
   <tr>
